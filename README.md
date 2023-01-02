@@ -12,3 +12,4 @@ Souvent erreur :
 fatal corrupt loose object lorsqu'on essaye de commit ou de push.
 Suivre cette methode : https://stackoverflow.com/questions/4254389/git-corrupt-loose-object
 
+Lire la doc  sur Docker - Aller sur docker Hub. 
