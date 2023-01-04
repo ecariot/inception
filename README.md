@@ -40,3 +40,11 @@ verifier ler erreur ngninx dans le conatiner
 check les erreur du lancment du container     
 ```docker logs --tail=50 --follow --timestamps id_container```
 
+doc pour le script de mariadb : https://mariadb.com/kb/en/mysql-command-line-client/
+
+run wordpress 
+```docker run --name some-wordpress -p 8080:80 -d wordpress```
+
+supprimer tous les volumes :
+```docker volume rm $(docker volume ls -q)```
+

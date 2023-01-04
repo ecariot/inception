@@ -16,7 +16,7 @@ wp config create	    --allow-root \
                     --dbname=${DB_NAME} \
                     --dbuser=${DB_USER} \
                     --dbpass=${DB_PASSWORD} \
-                    --dbhost=mariadb:3306 --path='/var/www/wordpress'
+                    --dbhost=${DB_HOSTdock} --path='/var/www/wordpress'
 wp core install     --url=localhost \
                     --title="Inception" \
                     --admin_user=${WP_ADMIN_LOGIN} \
