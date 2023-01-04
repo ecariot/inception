@@ -38,7 +38,11 @@ services:
   wordpress:
     image: wordpress
     container_name: wordpress
-    env_file: .env
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: emmo
+      WORDPRESS_DB_PASSWORD: emmo
+      WORDPRESS_DB_NAME: emmodb
     volumes:
     - wordpress:/var/www/wordpress
     networks:
