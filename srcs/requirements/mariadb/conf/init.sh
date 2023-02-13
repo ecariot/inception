@@ -1,9 +1,9 @@
 
 #!/bin/sh
 
-
 if [ ! -d /var/lib/mysql/wordpress ]
 then
+    mysql_install_db --user=mysql --datadir=/var/lib/mysql --auth-root-authentication-method=normal --skip-test-db
 
     echo "Starting temporary server..."
     cd '/usr' ; /usr/bin/mysqld_safe --datadir=/var/lib/mysql &
@@ -13,9 +13,9 @@ then
     done
     echo "Creating Wordpress database..."
     mysql -u root << EOF
-       CREATE DATABASE ${MYSQL_DATABASE};
+       CREATE DATABASE ${DB_NAME};
        CREATE USER '${MYSQL_USER}'@'%' IDENTIFIED BY '${MYSQL_PASSWORD}';
-       GRANT ALL PRIVILEGES ON ${MYSQL_DATABASE}.* TO '${MYSQL_USER}'@'%';
+       GRANT ALL PRIVILEGES ON ${DB_NAME}.* TO '${MYSQL_USER}'@'%';
        FLUSH PRIVILEGES;
 EOF
 
@@ -39,3 +39,4 @@ fi
 echo "Starting mariadb server..."
 # exec mariadbd --user=root
 exec "$@"
+

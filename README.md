@@ -1,4 +1,4 @@
-# inception
+# Inception  🔲
 
 Bonne base de travail :
 https://tuto.grademe.fr/inception/
@@ -53,9 +53,12 @@ ERREURS FREQUENTES RENCONTREES :
 resoudre l'erreur ```bind already in use```
 regarder : https://www.curiousm.com/labs/2020/10/08/resolving-bind-address-already-in-use-when-starting-a-docker-instance/
 
-sudo lsof -i tcp:3306
-sudo kill -9 a484aee07bab
-sudo kill -9 28149
+```sudo lsof -i tcp:3306```
+```sudo kill -9 a484aee07bab``` a faire sans le ```-9``` si ca ne fonctionne pas.
+```sudo kill -9 28149```
 
 resoudre l'erreur ```Access denied for user 'root'@'localhost' (using password: NO)```
 regarder https://stackoverflow.com/questions/46193743/access-denied-for-user-rootlocalhost-using-password-no-whats-wrong
+
+
+resoudre l'erreur ```Error: Cannot select database. The database server could be connected to (which means your username and password is okay) but the `wordpress` database could not be selected.```

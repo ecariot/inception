@@ -3,7 +3,6 @@ FROM    debian:buster
 RUN     apt-get update -y && apt-get upgrade -y
 RUN     apt-get -y install curl \
         #pour utiliser mysqladmin
-        mariadb-client \
         #php pour utiliser wordpress
         php7.3 \
         php7.3-fpm \
@@ -14,6 +13,7 @@ RUN     apt-get -y install curl \
         php7.3-zip \
         php7.3-gd \
         php7.3-imap
+        mariadb-client \
 
 RUN        mkdir -p /var/www/wordpress ; mkdir -p /run/php
 
@@ -27,3 +27,4 @@ COPY conf/auto_config.sh auto_config.sh
 ENTRYPOINT ["bash", "auto_config.sh"]
 
 CMD ["php-fpm7.3", "-F"]
+# CMD ["tail", "-f"]
