@@ -2,10 +2,8 @@ echo "HELLO"
 
 sleep 2
 
-rm -f /var/www/wordpress/wp-config.php
-if [ ! -f /var/www/wordpress/wp-config.php ]
+if [ ! -f /var/www/wordpress/wp-config.php ];
 then
-    echo "Hello word"
     cd /var/www/wordpress/
     wp core download --force --allow-root
     until mysqladmin --user=${MYSQL_USER} --password=${MYSQL_PASSWORD} --host=mariadb ping; do
