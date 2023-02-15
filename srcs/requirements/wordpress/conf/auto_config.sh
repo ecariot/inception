@@ -2,8 +2,8 @@ echo "HELLO"
 
 sleep 2
 
-if [ ! -f /var/www/wordpress/wp-config.php ];
-then
+if [ ! -f /var/www/wordpress/wp-config.php ]; then
+
     cd /var/www/wordpress/
     wp core download --force --allow-root
     until mysqladmin --user=${MYSQL_USER} --password=${MYSQL_PASSWORD} --host=mariadb ping; do
@@ -12,13 +12,13 @@ then
 
     echo "create wp config"
 
-    wp config create	--allow-root \
-                        --dbname=${DB_NAME} \
+    wp config create    --dbname=${DB_NAME} \
                         --dbuser=${MYSQL_USER} \
                         --dbpass=${MYSQL_PASSWORD} \
-                        --dbhost=${DB_HOST}
+                        --dbhost=${DB_HOST} \
+                        --allow-root
 
-    wp core install     --url=localhost \
+    wp core install     --url=emcariot.42.fr \
                         --title="Inception" \
                         --admin_user=${WP_ADMIN_LOGIN} \
                         --admin_password=${WP_ADMIN_PASSWORD} \
@@ -27,7 +27,10 @@ then
                         --allow-root
 
     echo "WORD PRESS OK- GO SUR LE WP USER CREATE"
-    wp user create      --allow-root --role=author $USER1_LOGIN $USER1_MAIL --user_pass=$USER1_PASSWORD
+    wp user create      ${USER1_LOGIN} ${USER1_MAIL} \
+                        --user_pass=${USER1_PASSWORD} \
+                        --role=author \
+                        --allow-root
     echo "OK WP USER CREATE"
 fi;
 exec "$@"
