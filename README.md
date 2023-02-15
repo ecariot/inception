@@ -62,3 +62,6 @@ regarder https://stackoverflow.com/questions/46193743/access-denied-for-user-roo
 
 
 resoudre l'erreur ```Error: Cannot select database. The database server could be connected to (which means your username and password is okay) but the `wordpress` database could not be selected.```
+
+pour les commits qui ne fonctionneraient pas avec fatal lose object:
+suivre : ```https://stackoverflow.com/questions/4254389/git-corrupt-loose-object```

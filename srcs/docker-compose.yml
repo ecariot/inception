@@ -2,7 +2,6 @@ version: '3'
 
 services:
   mariadb:
-    # image: mariadb
     container_name: mariadb
     volumes:
       - datadb:/var/lib/mysql
@@ -14,13 +13,8 @@ services:
     env_file:
       - .env
     restart: on-failure # "on-failure", container will be restarted
-    # ports:
-    #  - "3306:3306"
-    # expose :
-    #   - "3306"
 
   wordpress:
-    # image: wordpress
     container_name: wordpress
     env_file:
       - .env
@@ -34,11 +28,8 @@ services:
     depends_on:    # wordpress will be started after mariadb
       - mariadb
     restart: on-failure
-    # ports:
-    #   - "127.0.0.1:9000:9000"
 
   nginx:           # with TLSv.1.2
-    # image: nginx
     container_name: nginx # name of the container
     volumes:
       - wordpress:/var/www/wordpress
@@ -71,8 +62,6 @@ volumes:
       type: 'none'
       o: 'bind'
       device: '/home/emcariot/data/mysql'
-
-
 
 #network part
 networks:

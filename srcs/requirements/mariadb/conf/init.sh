@@ -37,6 +37,5 @@ _EOF_
 fi
 
 echo "Starting mariadb server..."
-# exec mariadbd --user=root
 exec "$@"
 
