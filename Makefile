@@ -2,26 +2,26 @@ NAME = inception
 
 all: inception
 
-${NAME}: build up
-
 build:
 
-		sudo docker-compose -f srcs/docker-compose.yml build
+		docker-compose -f srcs/docker-compose.yml up -d --build
 volume:
-		sudo rm -rf /home/emcariot/data
-		sudo mkdir -p /home/emcariot/data
-		sudo mkdir -p /home/emcariot/data/mysql
-		sudo mkdir -p /home/emcariot/data/wordpress
-up:
-		sudo docker-compose -f srcs/docker-compose.yml up -d --remove-orphans
+		rm -rf /home/emcariot/data
+		mkdir -p /home/emcariot/data
+		mkdir -p /home/emcariot/data/mysql
+		mkdir -p /home/emcariot/data/wordpress
 down:
-		sudo docker-compose -f srcs/docker-compose.yml down
+		docker-compose -f srcs/docker-compose.yml down
 stop:
-		sudo docker-compose -f srcs/docker-compose.yml stop
+		docker-compose -f srcs/docker-compose.yml stop
 rm: stop
-		sudo docker-compose -f srcs/docker-compose.yml rm
-clean: rm
+		docker-compose -f srcs/docker-compose.yml rm
+clean: down
 		docker system prune -af
-re: clean ${NAME}
+		docker volume prune --force
+fclean: docker stop $$(docker ps -qa)
+		docker system pune --all --force --volumes
+re: down
+	docker-compose -f srcs/docker-compose.yml up -d --build
 
-.PHONY: all clean
+.PHONY: all build down re clean fclean
