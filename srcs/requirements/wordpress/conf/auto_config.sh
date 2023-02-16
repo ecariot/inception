@@ -18,7 +18,7 @@ if [ ! -f /var/www/wordpress/wp-config.php ]; then
                         --dbhost=${DB_HOST} \
                         --allow-root
 
-    wp core install     --url=inception.42.fr \
+    wp core install     --url=emcariot.42.fr \
                         --title="Inception" \
                         --admin_user=${WP_ADMIN_LOGIN} \
                         --admin_password=${WP_ADMIN_PASSWORD} \
